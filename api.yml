@@ -1,0 +1,76 @@
+#Test with: http://editor.swagger.io/
+
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Microservice for Chat
+  description: Java + Postgesql
+  license:
+    name: Hanged Man, 2020-I
+host: host:4000
+basePath: /sa-chat-ms/resources
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /users:
+    post:
+      summary: Send new message
+      operationId: insertMessage
+      parameters:
+        - name: user
+          in: body
+          required: true
+          description: User Object
+          schema:
+            $ref: '#/definitions/UserInput'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+
+definitions:
+
+  # ChatMessage
+  Message:
+    type: object
+    properties:
+      username:
+        type: string
+      message:
+        type: string
+
+  UserInput:
+    type: object
+    properties:
+      username:
+        type: string
+      message:
+        type: string
+
+
+# Errors
+  ErrorModel:
+    type: object
+    required:
+      - message
+      - code
+    properties:
+      message:
+        type: string
+      code:
+        type: number
+      description:
+        type: object
