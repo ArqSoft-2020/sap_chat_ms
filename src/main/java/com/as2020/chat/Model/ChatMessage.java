@@ -1,33 +1,10 @@
 package com.as2020.chat.Model;
 
 public class ChatMessage {
-    private String content;
     private String sender;
-    private MessageType type;
-    private int idChat;
-    private static String word;
-
-    public enum MessageType {
-        CHAT, NEW, JOIN
-    }
-
-    public String getWord() {
-        return word;
-    }
-
-    public void setWord(String word) {
-        this.word = word;
-    }
-
-
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
+    private String content;
+    private String type;
+    private String idChat;
 
     public String getSender() {
         return sender;
@@ -37,21 +14,28 @@ public class ChatMessage {
         this.sender = sender;
     }
 
-    public MessageType getType() {
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getType() {
         return type;
     }
 
-    public void setType(MessageType type) {
+    public void setType(String type) {
         this.type = type;
     }
-    public int getIdChat() {
+
+    public String getIdChat() {
         return idChat;
     }
 
-    public void setIdChat(int idChat) {
+    public void setIdChat(String idChat) {
         this.idChat = idChat;
     }
-
-
 }
 
